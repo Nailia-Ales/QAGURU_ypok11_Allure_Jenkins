@@ -8,8 +8,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import browser
 
-import attach
-#import allure_attach as attach
+#from utils.allure_attach import add_html
+#import attach
+import utils.allure_attach as attach
 
 load_dotenv()
 
