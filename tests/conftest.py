@@ -49,6 +49,7 @@ def browser_config():
     yield
 
     # Прикрепляем артефакты после выполнения теста
+    print(attach.__file__)
     attach.add_html(browser)
     attach.add_screenshot(browser)
     attach.add_logs(browser)

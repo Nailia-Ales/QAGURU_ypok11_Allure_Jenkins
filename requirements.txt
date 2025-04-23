@@ -6,3 +6,4 @@ allure-python-commons~=2.14.0
 python-dotenv~=1.1.0
 #attach~=0.1
 #h
+attach~=0.1
