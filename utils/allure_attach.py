@@ -44,30 +44,43 @@ def add_html(browser):
 
 
 # 🎥 Видео (если включена запись в Selenoid)
-def add_video(browser):
-    video_url = f"https://selenoid.autotests.cloud/video/{browser.driver.session_id}.mp4"
+#def add_video(browser):
+    #        video_url = f"https://selenoid.autotests.cloud/video/{browser.driver.session_id}.mp4"
 
     # Проверяем, что сессия существует перед добавлением видео
-    try:
+    #try:
         # Пример проверка сессии через запрос, если сессия завершена, то видео не будет доступно
-        response = requests.head(video_url)
-        if response.status_code == 200:
-            html = f"""
-            <html>
-                <body>
-                    <video width='100%' height='100%' controls autoplay>
-                        <source src='{video_url}' type='video/mp4'>
-                    </video>
-                </body>
-            </html>
-            """
-            allure.attach(
-                html,
-                name=f'Video_{browser.driver.session_id}',
-                attachment_type=AttachmentType.HTML,
-                extension='.html'
-            )
-        else:
-            print(f"Видео для сессии {browser.driver.session_id} недоступно.")
-    except Exception as e:
-        print(f"Ошибка при получении видео: {e}")
+    #   response = requests.head(video_url)
+    #   if response.status_code == 200:
+    #       html = f"""
+    #       <html>
+    #           <body>
+    #               <video width='100%' height='100%' controls autoplay>
+    #                   <source src='{video_url}' type='video/mp4'>
+    #               </video>
+    #           </body>
+    #       </html>
+    #       """
+    #       allure.attach(
+    #           html,
+    #           name=f'Video_{browser.driver.session_id}',
+    #           attachment_type=AttachmentType.HTML,
+    #           extension='.html'
+    #       )
+    #   else:
+    #       print(f"Видео для сессии {browser.driver.session_id} недоступно.")
+    #except Exception as e:
+#   print(f"Ошибка при получении видео: {e}")
+
+
+
+def add_video(browser):
+    video_url = "https://selenoid.autotests.cloud/video/" + browser.driver.session_id + ".mp4"
+    html = "<html><body><video width='100%' height='100%' controls autoplay><source src=' " \
+          + video_url \
+          + " ' type='video/mp4'></video></body></html>"
+    allure.attach(html, 'video_' + browser.driver.session_id, attachment_type=AttachmentType.HTML, extension='.html')
+
+
+
+
